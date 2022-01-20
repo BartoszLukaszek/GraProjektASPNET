@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gra Projekt ASP.NET", "Gra Projekt ASP.NET\Gra Projekt ASP.NET.csproj", "{9CE406E2-D2F1-47DD-952E-903B3B334E18}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CE406E2-D2F1-47DD-952E-903B3B334E18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE406E2-D2F1-47DD-952E-903B3B334E18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CE406E2-D2F1-47DD-952E-903B3B334E18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CE406E2-D2F1-47DD-952E-903B3B334E18}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6E850838-3AF4-42C3-950A-0D4B224D46D1}
+	EndGlobalSection
+EndGlobal
