@@ -4,6 +4,7 @@ using Gra_Projekt_ASP.NET.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gra_Projekt_ASP.NET.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220124235627_AddSingUpToDatabase")]
+    partial class AddSingUpToDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,13 +47,13 @@ namespace Gra_Projekt_ASP.NET.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Gra_Projekt_ASP.NET.Models.SignUp", b =>
+            modelBuilder.Entity("Gra_Projekt_ASP.NET.Models.SingUp", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("PlayerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlayerId"), 1L, 1);
 
                     b.Property<string>("ConfirmPassword")
                         .IsRequired()
@@ -71,10 +73,9 @@ namespace Gra_Projekt_ASP.NET.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("PlayerId");
 
                     b.ToTable("SignUp");
                 });
