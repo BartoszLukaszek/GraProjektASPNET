@@ -4,18 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gra_Projekt_ASP.NET.Controllers
 {
-    public class CategoryController : Controller
+    public class GameController : Controller
     {
         private readonly ApplicationDbContext _db;
 
-        public CategoryController(ApplicationDbContext db)
+        public GameController(ApplicationDbContext db)
         {
             _db = db;
         }
         public IActionResult Index()
         {
-            IEnumerable<Category> objCategoryList = _db.Categories;
-            return View(objCategoryList);
+            IEnumerable<GameModel> objGameList = _db.Game;
+            return View(objGameList);
         }
         //GET   
         public IActionResult Create()
@@ -26,15 +26,15 @@ namespace Gra_Projekt_ASP.NET.Controllers
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Category obj)
+        public IActionResult Create(GameModel obj)
         {
-            if(obj.Name == obj.DisplayOrder.ToString())
+            if(obj.Name == obj.Category.ToString())
             {
                 ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
             }
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
+                _db.Game.Add(obj);
                 _db.SaveChanges();
                 TempData["success"] = "Category crated successfully";
                 return RedirectToAction("Index");
@@ -48,28 +48,28 @@ namespace Gra_Projekt_ASP.NET.Controllers
             {
                 return NotFound();
             }
-            var categoryFromDb = _db.Categories.Find(id);
+            var gameFromDb = _db.Game.Find(id);
             //var categoryFromFDbFirst  =_db.Categories.FirstOrDefault(u => u.Id == id);
             //var categoryFromFDbSingle = _db.Categories.SingleOrDefault(u => u.Id == id);
             
-            if (categoryFromDb == null)
+            if (gameFromDb == null)
             {
                 return NotFound();
             }
-            return View(categoryFromDb);
+            return View(gameFromDb);
         }
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Category obj)
+        public IActionResult Edit(GameModel obj)
         {
-            if (obj.Name == obj.DisplayOrder.ToString())
+            if (obj.Name == obj.Category.ToString())
             {
                 ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
             }
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
+                _db.Game.Update(obj);
                 _db.SaveChanges();
                 TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index");
@@ -82,27 +82,27 @@ namespace Gra_Projekt_ASP.NET.Controllers
             {
                 return NotFound();
             }
-            var categoryFromDb = _db.Categories.Find(id);
+            var gameFromDb = _db.Game.Find(id);
             //var categoryFromFDbFirst  =_db.Categories.FirstOrDefault(u => u.Id == id);
             //var categoryFromFDbSingle = _db.Categories.SingleOrDefault(u => u.Id == id);
 
-            if (categoryFromDb == null)
+            if (gameFromDb == null)
             {
                 return NotFound();
             }
-            return View(categoryFromDb);
+            return View(gameFromDb);
         }
         //POST
         [HttpPost,ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePOST(int? id)
          {
-           var obj = _db.Categories.Find(id);
+           var obj = _db.Game.Find(id);
             if (obj == null)
             {
                 return NotFound();
             }
-                _db.Categories.Remove(obj);
+                _db.Game.Remove(obj);
                 _db.SaveChanges();
             TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index");

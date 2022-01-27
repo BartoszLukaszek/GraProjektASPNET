@@ -9,7 +9,7 @@ namespace Gra_Projekt_ASP.NET.Data
         {
 
         }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<GameModel> Game{ get; set; }
         public DbSet<SignUp> SignUp { get; set; }
 
     }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gra_Projekt_ASP.NET.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220126122323_AddSignUpToDatabse")]
-    partial class AddSignUpToDatabse
+    [Migration("20220127185933_AddGameToDatabase")]
+    partial class AddGameToDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace Gra_Projekt_ASP.NET.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Gra_Projekt_ASP.NET.Models.Category", b =>
+            modelBuilder.Entity("Gra_Projekt_ASP.NET.Models.GameModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,11 +32,12 @@ namespace Gra_Projekt_ASP.NET.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedDataTime")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("DisplayOrder")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -44,7 +45,7 @@ namespace Gra_Projekt_ASP.NET.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Game");
                 });
 
             modelBuilder.Entity("Gra_Projekt_ASP.NET.Models.SignUp", b =>

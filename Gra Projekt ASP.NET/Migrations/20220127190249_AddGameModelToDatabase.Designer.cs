@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gra_Projekt_ASP.NET.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220124235627_AddSingUpToDatabase")]
-    partial class AddSingUpToDatabase
+    [Migration("20220127190249_AddGameModelToDatabase")]
+    partial class AddGameModelToDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace Gra_Projekt_ASP.NET.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Gra_Projekt_ASP.NET.Models.Category", b =>
+            modelBuilder.Entity("Gra_Projekt_ASP.NET.Models.GameModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,11 +32,12 @@ namespace Gra_Projekt_ASP.NET.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedDataTime")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("DisplayOrder")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -44,16 +45,16 @@ namespace Gra_Projekt_ASP.NET.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Game");
                 });
 
-            modelBuilder.Entity("Gra_Projekt_ASP.NET.Models.SingUp", b =>
+            modelBuilder.Entity("Gra_Projekt_ASP.NET.Models.SignUp", b =>
                 {
-                    b.Property<int>("PlayerId")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlayerId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<string>("ConfirmPassword")
                         .IsRequired()
@@ -73,9 +74,10 @@ namespace Gra_Projekt_ASP.NET.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("PlayerId");
+                    b.HasKey("ID");
 
                     b.ToTable("SignUp");
                 });

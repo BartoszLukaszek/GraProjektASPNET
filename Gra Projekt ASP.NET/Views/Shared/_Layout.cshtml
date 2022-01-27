@@ -31,7 +31,7 @@
         <a class="nav-link text-dark" asp-controller="SignUp" asp-action="Index">SignUp</a> 
         </li>
         <li class="nav-item">
-        <a class="nav-link text-dark" asp-controller="Category" asp-action="Index">Category</a> 
+        <a class="nav-link text-dark" asp-controller="Game" asp-action="Index">Game</a> 
         </li>
        
         @*<li class="nav-item dropdown">
@@ -54,7 +54,7 @@
 </nav>
         
     </header>
-    <div class="container">
+    <div class="container" style="min-height:90vh"> 
         <main role="main" class="pb-3">
             <partial name="_Notification" />
             @RenderBody()
