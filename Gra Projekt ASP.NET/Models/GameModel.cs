@@ -13,6 +13,6 @@ namespace Gra_Projekt_ASP.NET.Models
         
         public string Category { get; set; }
 
-        public DateTime CreatedDataTime { get; set; } = DateTime.Now;
+        
     }
 }

@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Gra_Projekt_ASP.NET</RootNamespace>
+    <UserSecretsId>aede5058-d123-4c10-a0af-4a73f9045175</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
